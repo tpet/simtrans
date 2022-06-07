@@ -249,7 +249,7 @@ class SDFReader(object):
         if pose is not None:
             self.readPose(m, pose)
         for g in d.find('geometry').getchildren():
-            if not isinstance(g.tag, basestring):
+            if not isinstance(g.tag, str):
                 continue
             if g.tag == 'mesh':
                 m.shapeType = model.ShapeModel.SP_MESH

@@ -51,7 +51,7 @@ def resolveFile(f):
             ff = os.path.join(ppath, pkgfile)
             logging.debug('resolveFile resolved to %s' % ff)
             return ff
-    except Exception, e:
+    except Exception as e:
         logging.warn(str(e))
     logging.debug('resolveFile unresolved (use original)')
     return f
@@ -116,7 +116,7 @@ def findroot(mdata):
         if hasopenlink(mdata, p):
             ret.append(p)
     for l in mdata.links:
-        if not usedlinks.has_key(l.name):
+        if l.name not in usedlinks:
             ret.append(l.name)
     return ret
 

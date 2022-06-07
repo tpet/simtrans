@@ -59,11 +59,11 @@ try:
     import CosNaming
     import OpenHRP
 except ImportError:
-    print "Unable to find CORBA and OpenHRP library."
-    print "You can install the library by:"
-    print "$ sudo add-apt-repository ppa:hrg/daily"
-    print "$ sudo apt-get update"
-    print "$ sudo apt-get install openhrp openrtm-aist-python"
+    print("Unable to find CORBA and OpenHRP library.")
+    print("You can install the library by:")
+    print("$ sudo add-apt-repository ppa:hrg/daily")
+    print("$ sudo apt-get update")
+    print("$ sudo apt-get install openhrp openrtm-aist-python")
     pass
 
 plist = []

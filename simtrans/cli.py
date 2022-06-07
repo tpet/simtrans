@@ -12,9 +12,9 @@ try:
     import coloredlogs
     coloredlogs.install(show_hostname=False, show_name=False)
 except ImportError:
-    print 'unable to find python coloredlogs library.'
-    print 'please install by following command to get fancy output:'
-    print '$ sudo pip install coloredlogs'
+    print('unable to find python coloredlogs library.')
+    print('please install by following command to get fancy output:')
+    print('$ sudo pip install coloredlogs')
     pass
 
 from argparse import ArgumentParser, ArgumentError
@@ -136,9 +136,9 @@ def main():
     global basedir
     try:
         options = parser.parse_args()
-    except ArgumentError, e:
+    except ArgumentError as e:
         logging.error('OptionError: ', e)
-        print >> sys.stderr, parser.print_help()
+        print(parser.print_help(), file=sys.stderr)
         return 1
 
     if options.verbose:
@@ -148,7 +148,7 @@ def main():
             coloredlogs.set_level(logging.DEBUG)
 
     if options.tofile is None or options.fromfile is None:
-        print >> sys.stderr, parser.print_help()
+        print(parser.print_help(), file=sys.stderr)
         return 1
 
     logging.info("simtrans (version %s)" % __version__)
@@ -251,9 +251,9 @@ def main():
 def checker():
     try:
         options = checkerparser.parse_args()
-    except ArgumentError, e:
+    except ArgumentError as e:
         logging.error('OptionError: ', e)
-        print >> sys.stderr, parser.print_help()
+        print(parser.print_help(), file=sys.stderr)
         return 1
 
     if options.verbose:

@@ -28,13 +28,13 @@ parser.add_argument('-v', '--verbose', action='store_true', dest='verbose', defa
 def main():
     try:
         options = parser.parse_args()
-    except ArgumentError, e:
-        print >> sys.stderr, 'OptionError: ', e
-        print >> sys.stderr, parser.print_help()
+    except ArgumentError as e:
+        print('OptionError: ', e, file=sys.stderr)
+        print(parser.print_help(), file=sys.stderr)
         return 1
 
     if options.tofile is None or options.fromfile is None:
-        print >> sys.stderr, parser.print_help()
+        print(parser.print_help(), file=sys.stderr)
         return 1
 
     reader = collada.ColladaReader()
@@ -68,11 +68,11 @@ def main():
         elif ext == '.dot':
             writer = graphviz.GraphvizWriter()
         else:
-            print >> sys.stderr, 'unable to detect output format (may be not supported?)'
+            print('unable to detect output format (may be not supported?)', file=sys.stderr)
             return 1
 
-    print "converting from: %s" % options.fromfile
-    print "             to: %s" % options.tofile
+    print("converting from: %s" % options.fromfile)
+    print("             to: %s" % options.tofile)
 
     m = model.BodyModel()
 

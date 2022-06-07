@@ -34,7 +34,7 @@ import collada
 import numpy
 import uuid
 import lxml
-from StringIO import StringIO
+from io import StringIO
 
 # create this class to just to use generateNormals function
 class DummyTriangleSet(collada.triangleset.TriangleSet):

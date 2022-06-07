@@ -37,13 +37,13 @@ Utility command to fetch simulation model from gazebo's model database.'''
     parser.add_option('-v', '--verbose', action='store_true', dest='verbose', default=False, help='verbose output')
     try:
         options, args = parser.parse_args()
-    except OptionError, e:
-        print >> sys.stderr, 'OptionError: ', e
-        print >> sys.stderr, parser.print_help()
+    except OptionError as e:
+        print('OptionError: ', e, file=sys.stderr)
+        print(parser.print_help(), file=sys.stderr)
         return 1
 
     if options.fromfile is None and len(args) == 0:
-        print >> sys.stderr, parser.print_help()
+        print(parser.print_help(), file=sys.stderr)
         return 1
 
     # prepare world file which contains required model information
@@ -60,9 +60,9 @@ Utility command to fetch simulation model from gazebo's model database.'''
         needcleanup = True
 
     # now fetch the simulation model (run gzserver for only one iteration)
-    print "running gzserver to fetch the models ... (this will take a while)"
+    print("running gzserver to fetch the models ... (this will take a while)")
     subprocess.check_output(['gzserver', '--iters', '1', worldfile])
-    print "done!"
+    print("done!")
 
     if needcleanup:
         os.unlink(worldfile)

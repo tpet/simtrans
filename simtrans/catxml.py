@@ -16,13 +16,13 @@ Concatinate multiple xml files.'''
     parser.add_option('-v', '--verbose', action='store_true', dest='verbose', default=False, help='verbose output')
     try:
         options, args = parser.parse_args()
-    except OptionError, e:
-        print >> sys.stderr, 'OptionError: ', e
-        print >> sys.stderr, parser.print_help()
+    except OptionError as e:
+        print('OptionError: ', e, file=sys.stderr)
+        print(parser.print_help(), file=sys.stderr)
         return 1
 
     if len(args) <= 1:
-        print >> sys.stderr, parser.print_help()
+        print(parser.print_help(), file=sys.stderr)
         return 1
 
     d = lxml.etree.parse(utils.resolveFile(args[0]))
